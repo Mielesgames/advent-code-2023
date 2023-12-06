@@ -21,15 +21,21 @@ with open('words-day1.txt') as f:
         fullNumber = ""
         firstNumber = None
         lastNumber = None
-        for word in textNumbers.keys():
-            if word in item.lower():
-                item = item.replace(word, word_to_number(word))
-        for letter in item:
-            if letter.isnumeric():
+        for x in range(len(item)):
+            if item[0].isnumeric():
                 if firstNumber is None:
-                    firstNumber = letter
+                    firstNumber = item[0]
                 else:
-                    lastNumber = letter
+                    lastNumber = item[0]
+            else:
+                for letter in textNumbers:
+                    if item.startswith(letter):
+                        if firstNumber is None:
+                            firstNumber = word_to_number(letter)
+                        else:
+                            lastNumber = word_to_number(letter)
+                # item.startswith("eight")
+            item = item[1:]
         if lastNumber == None:
             lastNumber = firstNumber
         if firstNumber is not None and lastNumber is not None:
