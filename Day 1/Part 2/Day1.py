@@ -23,7 +23,7 @@ with open('words-day1.txt') as f:
         lastNumber = None
         for word in textNumbers.keys():
             if word in item.lower():
-                item = item.lower().replace(word, word_to_number(word))
+                item = item.replace(word, word_to_number(word))
         for letter in item:
             if letter.isnumeric():
                 if firstNumber is None:
@@ -34,7 +34,8 @@ with open('words-day1.txt') as f:
             lastNumber = firstNumber
         if firstNumber is not None and lastNumber is not None:
             fullNumber = int(str(firstNumber) + str(lastNumber))
-            print(fullNumber)
+            # print(fullNumber)
+            print(f"{finalResult} + {fullNumber} = {finalResult + fullNumber}")
             finalResult += fullNumber
 
     print(finalResult)
